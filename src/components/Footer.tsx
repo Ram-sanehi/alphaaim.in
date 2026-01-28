@@ -45,14 +45,15 @@ export function Footer() {
             className="space-y-6"
           >
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">α</span>
+              <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center shadow-lg border-2 border-primary/20">
+                <img src="/logo-circular1.png" alt="Alpha Investment Management" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h3 className="text-xl font-display font-bold gold-text">Alpha Investment</h3>
-                <p className="text-xs text-muted-foreground">Management Services</p>
+                <h3 className="text-s font-display font-bold gold-text">Alpha Investment Management</h3>
+                {/* <p className="text-xs text-muted-foreground">Management Services</p> */}
               </div>
             </Link>
+            
             <p className="text-muted-foreground text-sm leading-relaxed">
               Your trusted partner for comprehensive wealth management and financial planning. 
               Building secure financial futures since 2009.
@@ -128,25 +129,26 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-muted-foreground text-sm">
-                  123 Financial District,<br />
-                  Mumbai, Maharashtra 400001
+                  Dwarka City Sector 2A,<br />
+                  Mahalunge Ingale, Chakan,<br />
+                  Pune, Maharashtra 410501
                 </span>
               </li>
               <li>
-                <a href="tel:+911234567890" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href="tel:+919607509586" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="h-5 w-5 text-primary" />
-                  <span className="text-sm">+91 123 456 7890</span>
+                  <span className="text-sm">+91 9607509586</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:info@alphainvestment.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:alphainvestmentmnt@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span className="text-sm">info@alphainvestment.com</span>
+                  <span className="text-sm">alphainvestmentmnt@gmail.com</span>
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-primary" />
-                <span className="text-muted-foreground text-sm">Mon - Sat: 9:00 AM - 6:00 PM</span>
+                <span className="text-muted-foreground text-sm">Mon - Fri: 9:00 AM - 6:00 PM | Sat: 10:00 AM - 2:00 PM</span>
               </li>
             </ul>
           </motion.div>

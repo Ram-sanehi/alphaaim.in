@@ -10,15 +10,15 @@ import { FloatingChat } from "@/components/FloatingChat";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       <Navbar />
-      <StockTicker />
       <Hero />
       <Stats />
       <Services />
       <Testimonials />
       <CTA />
       <Footer />
+      <StockTicker />
       <FloatingChat />
     </div>
   );

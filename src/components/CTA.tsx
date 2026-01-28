@@ -33,7 +33,7 @@ export function CTA() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-primary/50 hover:bg-primary/10 text-lg px-8">
-              <a href="tel:+911234567890">
+              <a href="tel:+919607509586">
                 <Phone className="mr-2 h-5 w-5" />
                 Call Us Now
               </a>

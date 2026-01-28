@@ -10,10 +10,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { icon: Users, value: 5000, suffix: "+", label: "Happy Clients" },
-  { icon: TrendingUp, value: 500, suffix: "Cr+", label: "Assets Under Management" },
-  { icon: Award, value: 15, suffix: "+", label: "Years of Excellence" },
-  { icon: Building2, value: 25, suffix: "+", label: "Partner Institutions" },
+  { icon: Users, value: 2000, suffix: "+", label: "Happy Clients" },
+  { icon: TrendingUp, value: 100, suffix: "Cr+", label: "Assets Under Management" },
+  { icon: Award, value: 10, suffix: "+", label: "Years of Excellence" },
+  { icon: Building2, value: 15, suffix: "+", label: "Partner Institutions" },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {

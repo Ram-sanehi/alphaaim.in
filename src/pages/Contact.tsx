@@ -18,24 +18,24 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Our Office",
-    details: ["123 Financial District,", "Nariman Point,", "Mumbai, Maharashtra 400001"],
+    details: ["Dwarka City Sector 2A,", "Mahalunge Ingale, Chakan,", "Pune, Maharashtra 410501"],
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+91 123 456 7890", "+91 987 654 3210"],
-    links: ["tel:+911234567890", "tel:+919876543210"],
+    details: ["+91 9607509586"],
+    links: ["tel:+919607509586"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@alphainvestment.com", "support@alphainvestment.com"],
-    links: ["mailto:info@alphainvestment.com", "mailto:support@alphainvestment.com"],
+    details: ["alphainvestmentmnt@gmail.com"],
+    links: ["mailto:alphainvestmentmnt@gmail.com"],
   },
   {
     icon: Clock,
     title: "Working Hours",
-    details: ["Monday - Friday: 9:00 AM - 6:00 PM", "Saturday: 10:00 AM - 2:00 PM", "Sunday: Closed"],
+    details: ["Monday - Friday: 9:00 AM - 6:00 PM", "Saturday: 10:00 AM - 2:00 PM (Consultant only)", "Sunday: Closed"],
   },
 ];
 
@@ -165,17 +165,22 @@ const Contact = () => {
             className="glass-card rounded-2xl overflow-hidden h-96"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.2567671234567!2d72.82345678901234!3d18.92567890123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDU1JzMyLjQiTiA3MsKwNDknMjMuMiJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.4198087894544!2d73.53823!3d18.7444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ba6f6f6f6f6f%3A0x0!2sIn%20front%20of%20Mahalunge%20Gate%2C%20Ingale%2C%20Chakan%2C%20Pune%2C%20Maharashtra%20410501!5e0!3m2!1sen!2sin!4v1706460000000"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Office Location"
+              title="Alpha Investment Management - Office Location in Pune"
               className="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             />
           </motion.div>
+          <div className="mt-6 text-center">
+            <p className="text-muted-foreground text-sm">
+              📍 In front of Mahalunge Gate, Ingale, Chakan, Pune, Maharashtra 410501
+            </p>
+          </div>
         </div>
       </section>
 

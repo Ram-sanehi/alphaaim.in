@@ -35,13 +35,13 @@ export function Navbar() {
       <div className="hidden md:block bg-secondary border-b border-border">
         <div className="container mx-auto px-4 py-2 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6 text-muted-foreground">
-            <a href="tel:+911234567890" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href="tel:+919607509586" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Phone className="h-4 w-4" />
-              +91 123 456 7890
+              +91 9607509586
             </a>
-            <a href="mailto:info@alphainvestment.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href="mailto:alphainvestmentmnt@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="h-4 w-4" />
-              info@alphainvestment.com
+              alphainvestmentmnt@gmail.com
             </a>
           </div>
           <div className="text-muted-foreground">
@@ -65,12 +65,12 @@ export function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center group-hover:scale-105 transition-transform">
-                <span className="text-primary-foreground font-bold text-xl">α</span>
+              <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border-2 border-primary/20">
+                <img src="/logo-circular1.png" alt="Alpha Investment Management" className="w-full h-full object-cover" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-display font-bold gold-text">Alpha Investment</h1>
-                <p className="text-xs text-muted-foreground">Management Services</p>
+                <h1 className="text-lg font-display font-bold gold-text">Alpha Investment Management</h1>
+                {/* <p className="text-xs text-muted-foreground">Management Services</p> */}
               </div>
             </Link>
 
