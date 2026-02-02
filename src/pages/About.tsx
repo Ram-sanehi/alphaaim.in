@@ -15,12 +15,12 @@ import {
 } from "lucide-react";
 
 const milestones = [
-  { year: "2009", title: "Founded", description: "Started with a vision to democratize wealth management" },
-  { year: "2012", title: "SEBI Registration", description: "Became a registered investment advisor with SEBI" },
-  { year: "2015", title: "1000 Clients", description: "Milestone of serving 1000+ happy clients" },
-  { year: "2018", title: "₹100 Cr AUM", description: "Crossed ₹100 Crores in assets under management" },
-  { year: "2021", title: "Digital Transformation", description: "Launched our digital advisory platform" },
-  { year: "2024", title: "5000+ Clients", description: "Growing family of satisfied investors" },
+  { year: "2014", title: "Founded", description: "Started with a vision to democratize wealth management" },
+  { year: "2017", title: "SEBI Registration", description: "Became a registered investment advisor with SEBI" },
+  { year: "2020", title: "1000 Clients", description: "Milestone of serving 1000+ happy clients" },
+  { year: "2023", title: "₹50 Cr AUM", description: "Crossed ₹100 Crores in assets under management" },
+  { year: "2025", title: "Digital Transformation", description: "Launched our digital advisory platform" },
+  { year: "current", title: "3000+ Clients", description: "Growing family of satisfied investors" },
 ];
 
 const values = [
@@ -55,7 +55,7 @@ const About = () => {
               <span className="gold-text">Wealth Building</span>
             </h1>
             <p className="text-lg text-muted-foreground">
-              For over 15 years, Alpha Investment Management has been helping individuals 
+              For over 10+ years, Alpha Investment Management has been helping individuals 
               and families achieve their financial dreams through expert guidance and 
               personalized investment strategies.
             </p>
@@ -76,7 +76,7 @@ const About = () => {
                 Our Story
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                Building <span className="gold-text">Financial Futures</span> Since 2009
+                Building <span className="gold-text">Financial Futures</span> Since 2014
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
@@ -90,8 +90,8 @@ const About = () => {
                   transparent practices.
                 </p>
                 <p>
-                  Today, we proudly serve over 5,000 clients across India, managing assets 
-                  worth more than ₹500 crores. Our team of certified financial planners 
+                  Today, we proudly serve over 3,000 clients across India, managing assets 
+                  worth more than ₹100 crores. Our team of certified financial planners 
                   and investment advisors work tirelessly to help you achieve your 
                   financial goals.
                 </p>
@@ -106,17 +106,17 @@ const About = () => {
             >
               <div className="glass-card rounded-xl p-6 text-center">
                 <TrendingUp className="h-10 w-10 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-bold gold-text">15+</div>
+                <div className="text-3xl font-bold gold-text">10+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="glass-card rounded-xl p-6 text-center translate-y-8">
                 <Users className="h-10 w-10 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-bold gold-text">5000+</div>
+                <div className="text-3xl font-bold gold-text">3000+</div>
                 <div className="text-sm text-muted-foreground">Happy Clients</div>
               </div>
               <div className="glass-card rounded-xl p-6 text-center">
                 <Award className="h-10 w-10 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-bold gold-text">₹500Cr+</div>
+                <div className="text-3xl font-bold gold-text">₹100Cr+</div>
                 <div className="text-sm text-muted-foreground">Assets Managed</div>
               </div>
               <div className="glass-card rounded-xl p-6 text-center translate-y-8">

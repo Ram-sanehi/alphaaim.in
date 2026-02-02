@@ -25,9 +25,9 @@ const partners = [
 ];
 
 const trustIndicators = [
-  "15+ Years of Market Experience",
-  "5000+ Satisfied Clients",
-  "₹500+ Crores Assets Under Management",
+  "10+ Years of Market Experience",
+  "3000+ Satisfied Clients",
+  "₹100+ Crores Assets Under Management",
   "100% Transparent Fee Structure",
   "Personalized Investment Strategies",
   "24/7 Portfolio Monitoring",
