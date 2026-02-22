@@ -47,9 +47,6 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              About Us
-            </span>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Your Trusted Partner in{" "}
               <span className="gold-text">Wealth Building</span>
@@ -72,9 +69,6 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                Our Story
-              </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
                 Building <span className="gold-text">Financial Futures</span> Since 2014
               </h2>
@@ -104,27 +98,111 @@ const About = () => {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-4"
             >
-              <div className="glass-card rounded-xl p-6 text-center">
+              <div className="glass-card rounded-xl p-6 text-center hover-glow hover:border-primary/50">
                 <TrendingUp className="h-10 w-10 text-primary mx-auto mb-3" />
                 <div className="text-3xl font-bold gold-text">10+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
-              <div className="glass-card rounded-xl p-6 text-center translate-y-8">
+              <div className="glass-card rounded-xl p-6 text-center translate-y-8 hover-glow hover:border-primary/50">
                 <Users className="h-10 w-10 text-primary mx-auto mb-3" />
                 <div className="text-3xl font-bold gold-text">3000+</div>
                 <div className="text-sm text-muted-foreground">Happy Clients</div>
               </div>
-              <div className="glass-card rounded-xl p-6 text-center">
+              <div className="glass-card rounded-xl p-6 text-center hover-glow hover:border-primary/50">
                 <Award className="h-10 w-10 text-primary mx-auto mb-3" />
                 <div className="text-3xl font-bold gold-text">₹100Cr+</div>
                 <div className="text-sm text-muted-foreground">Assets Managed</div>
               </div>
-              <div className="glass-card rounded-xl p-6 text-center translate-y-8">
+              <div className="glass-card rounded-xl p-6 text-center translate-y-8 hover-glow hover:border-primary/50">
                 <Shield className="h-10 w-10 text-primary mx-auto mb-3" />
                 <div className="text-3xl font-bold gold-text">100%</div>
                 <div className="text-sm text-muted-foreground">Compliance</div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Team Section */}
+      <section className="py-24 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold">
+              Meet Our <span className="gold-text">Leadership Team</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
+              Our experienced team of financial experts is dedicated to helping you achieve your financial goals.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                name: "Nageshwar Prasad",
+                role: "Founder & Business Head",
+                qualifications: [
+                  "SEBI Registered Investment Advisor & Portfolio Manager",
+                  "CFA Level II Candidate",
+                  "Master's in Finance – Henley Business School, London, UK",
+                  "AMFI & IRDA Approved Mutual Fund and Insurance Distributor",
+                  "10+ Years of Experience in Investment Management & Broking Industry",
+                ],
+              },
+              {
+                name: "Sonali Malhotra",
+                role: "Head of Risk Management",
+                qualifications: [
+                  "M.Com",
+                  "CA",
+                  "NISM Certified",
+                  "7+ Years of Experience in Insurance & Risk Management",
+                ],
+              },
+              {
+                name: "Rahul Jain",
+                role: "Relationship Manager",
+                qualifications: [
+                  "M.Com",
+                  "CA",
+                  "NISM Certified",
+                  "Expertise in Client Relationship & Financial Advisory Services",
+                ],
+              },
+              {
+                name: "Advocate Rajat Diwan",
+                role: "Compliance Officer",
+                qualifications: [
+                  "MA",
+                  "LLB",
+                  "Legal & Regulatory Compliance Specialist",
+                ],
+              },
+            ].map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="glass-card rounded-2xl p-8 text-center hover-glow hover:border-primary/50"
+              >
+                <h3 className="text-xl font-semibold mb-2 gold-text">{member.name}</h3>
+                <p className="text-primary font-medium mb-4">{member.role}</p>
+                <ul className="space-y-2 text-left">
+                  {member.qualifications.map((qual, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-primary shrink-0">•</span>
+                      <span className="text-xs text-muted-foreground">{qual}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -137,7 +215,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="glass-card rounded-2xl p-8"
+              className="glass-card rounded-2xl p-8 hover-glow hover:border-primary/50"
             >
               <div className="w-16 h-16 rounded-xl gold-gradient flex items-center justify-center mb-6">
                 <Target className="h-8 w-8 text-primary-foreground" />
@@ -156,7 +234,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-2xl p-8"
+              className="glass-card rounded-2xl p-8 hover-glow hover:border-primary/50"
             >
               <div className="w-16 h-16 rounded-xl gold-gradient flex items-center justify-center mb-6">
                 <Eye className="h-8 w-8 text-primary-foreground" />
@@ -182,9 +260,6 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Our Journey
-            </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold">
               Milestones That <span className="gold-text">Define Us</span>
             </h2>
@@ -205,7 +280,7 @@ const About = () => {
                   }`}
                 >
                   <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                    <div className="glass-card rounded-xl p-6 inline-block">
+                    <div className="glass-card rounded-xl p-6 inline-block hover-glow hover:border-primary/50">
                       <div className="text-2xl font-bold gold-text mb-2">{milestone.year}</div>
                       <h3 className="text-lg font-semibold mb-1">{milestone.title}</h3>
                       <p className="text-sm text-muted-foreground">{milestone.description}</p>
@@ -229,9 +304,6 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Our Values
-            </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold">
               What We <span className="gold-text">Stand For</span>
             </h2>
@@ -245,7 +317,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-2xl p-8 text-center hover-glow"
+                className="glass-card rounded-2xl p-8 text-center hover-glow hover:border-primary/50"
               >
                 <div className="w-16 h-16 rounded-xl gold-gradient flex items-center justify-center mx-auto mb-6">
                   <value.icon className="h-8 w-8 text-primary-foreground" />

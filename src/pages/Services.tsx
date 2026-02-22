@@ -34,6 +34,17 @@ const services = [
       "Implementation - Executing the investment strategy",
       "Monitoring - Continuous portfolio tracking and adjustments",
     ],
+    instruments: [
+      "Equity Instruments",
+      "Debt Instruments",
+      "Derivatives",
+      "Mutual Funds",
+      "Foreign Exchange Instruments",
+      "Money Market Instruments",
+      "Government Saving Schemes",
+      "Real Estate & Commodities",
+      "Cash Equivalents",
+    ],
   },
   {
     icon: PiggyBank,
@@ -52,6 +63,14 @@ const services = [
       "Plan Development - Creating actionable financial strategies",
       "Implementation Support - Helping you execute the plan",
       "Regular Reviews - Adjusting the plan as life changes",
+    ],
+    offerings: [
+      "Personal Financial Planning",
+      "Family Wealth Planning",
+      "Education Planning",
+      "Marriage Planning",
+      "Business Planning",
+      "Succession Planning",
     ],
   },
   {
@@ -72,6 +91,14 @@ const services = [
       "Application - Submitting to selected lenders",
       "Disbursement - Ensuring smooth fund transfer",
     ],
+    offerings: [
+      "Personal Loan",
+      "Home Loan",
+      "New & Used Vehicle Loans",
+      "Loan Against Property",
+      "Loan for Buying Plot/Land",
+      "Loan for Renovation",
+    ],
   },
   {
     icon: Shield,
@@ -90,6 +117,17 @@ const services = [
       "Product Selection - Choosing appropriate insurance products",
       "Policy Procurement - Securing optimal coverage",
       "Claim Support - Assisting during claims",
+    ],
+    offerings: [
+      "Two & Four Wheeler Insurance",
+      "Commercial Vehicle Insurance",
+      "Health Insurance",
+      "Term Insurance",
+      "Life Insurance",
+      "Pension Schemes",
+      "Travel Insurance",
+      "Home & Shop Insurance",
+      "Industrial Insurance",
     ],
   },
   {
@@ -110,6 +148,14 @@ const services = [
       "Investment Selection - Choosing tax-saving instruments",
       "Documentation - Maintaining proper records",
     ],
+    offerings: [
+      "Section 80C Deductions (LIC, PPF, ELSS, FD)",
+      "Section 80D Health Insurance Premium",
+      "Section 24 Home Loan Interest",
+      "Section 80E Education Loan Interest",
+      "Capital Gains Planning",
+      "Business Loss Optimization",
+    ],
   },
   {
     icon: Briefcase,
@@ -128,6 +174,12 @@ const services = [
       "Investment Strategy - Building retirement portfolio",
       "Income Planning - Creating post-retirement income",
       "Estate Planning - Ensuring smooth wealth transfer",
+    ],
+    offerings: [
+      "SWP (Systematic Withdrawal Plan)",
+      "Senior Citizen Investment Instruments",
+      "Pension Plans",
+      "Government Schemes",
     ],
   },
 ];
@@ -151,9 +203,6 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Our Services
-            </span>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Comprehensive{" "}
               <span className="gold-text">Financial Solutions</span>
@@ -177,7 +226,7 @@ const ServicesPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-2xl overflow-hidden"
+                className="glass-card rounded-2xl overflow-hidden hover-glow hover:border-primary/50"
               >
                 {/* Service Header */}
                 <button
@@ -208,7 +257,7 @@ const ServicesPage = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-8 pb-8 grid md:grid-cols-2 gap-8 border-t border-border pt-8">
+                      <div className="px-8 pb-8 grid md:grid-cols-3 gap-8 border-t border-border pt-8">
                         {/* Key Benefits */}
                         <div>
                           <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -227,7 +276,7 @@ const ServicesPage = () => {
                                 className="flex items-center gap-3"
                               >
                                 <div className="w-2 h-2 rounded-full bg-primary" />
-                                <span className="text-muted-foreground">{benefit}</span>
+                                <span className="text-muted-foreground text-sm">{benefit}</span>
                               </motion.li>
                             ))}
                           </ul>
@@ -253,6 +302,29 @@ const ServicesPage = () => {
                             ))}
                           </ol>
                         </div>
+
+                        {/* Offerings/Instruments */}
+                        {(service.offerings || service.instruments) && (
+                          <div>
+                            <h4 className="text-lg font-semibold mb-4">
+                              {service.instruments ? "Investment Instruments" : "Our Offerings"}
+                            </h4>
+                            <ul className="space-y-3">
+                              {(service.offerings || service.instruments)?.map((offering, i) => (
+                                <motion.li
+                                  key={i}
+                                  initial={{ opacity: 0, x: 10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: i * 0.05 }}
+                                  className="flex items-center gap-3"
+                                >
+                                  <div className="w-2 h-2 rounded-full bg-primary" />
+                                  <span className="text-muted-foreground text-sm">{offering}</span>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   )}

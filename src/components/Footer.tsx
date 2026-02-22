@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { 
   Phone, 
   Mail, 
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -32,6 +34,35 @@ const services = [
 ];
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const { toast } = useToast();
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !email.includes("@")) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubscribing(true);
+    
+    // Simulate subscription delay
+    setTimeout(() => {
+      setIsSubscribing(false);
+      setEmail("");
+      toast({
+        title: "Thank you for subscribing us!",
+        description: "You'll receive the latest financial insights in your inbox.",
+      });
+    }, 800);
+  };
+
   return (
     <footer className="bg-card border-t border-border">
       {/* Main footer content */}
@@ -129,9 +160,10 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-muted-foreground text-sm">
-                  Dwarka City Sector 2A,<br />
-                  Mahalunge Ingale, Chakan,<br />
-                  Pune, Maharashtra 410501
+                  1st Floor (Above Subhedar Biryani),<br />
+                  Mahalungeker Complex, Mahalunge Kaman,<br />
+                  Chakan-Talegaon Highway, Chakan,<br />
+                  Pune 410501
                 </span>
               </li>
               <li>
@@ -166,14 +198,17 @@ export function Footer() {
             <p className="text-muted-foreground text-sm mb-6">
               Get the latest financial insights and market updates delivered to your inbox.
             </p>
-            <form className="flex gap-3 max-w-md mx-auto">
+            <form className="flex gap-3 max-w-md mx-auto" onSubmit={handleNewsletterSubmit}>
               <Input
                 type="email"
                 placeholder="Enter your email"
                 className="flex-1"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubscribing}
               />
-              <Button type="submit" className="gold-gradient text-primary-foreground hover:opacity-90">
-                Subscribe
+              <Button type="submit" className="gold-gradient text-primary-foreground hover:opacity-90" disabled={isSubscribing}>
+                {isSubscribing ? "Subscribing..." : "Subscribe"}
               </Button>
             </form>
           </div>

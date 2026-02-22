@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { sendContactFormEmail } from "@/api/email";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -64,6 +65,20 @@ export function ContactForm() {
 
       if (error) throw error;
 
+      // Send email via Resend
+      try {
+        await sendContactFormEmail(
+          validatedData.name,
+          validatedData.email,
+          validatedData.phone,
+          validatedData.subject,
+          validatedData.message
+        );
+      } catch (emailError) {
+        console.error("Email send error:", emailError);
+        // Don't fail the form submission if email fails
+      }
+
       setIsSuccess(true);
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       
@@ -99,7 +114,7 @@ export function ContactForm() {
     <motion.form
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-card rounded-2xl p-8 space-y-6"
+      className="glass-card rounded-2xl p-8 space-y-6 hover-glow hover:border-primary/50"
       onSubmit={handleSubmit}
     >
       <div className="grid md:grid-cols-2 gap-6">
@@ -108,7 +123,7 @@ export function ContactForm() {
           <Input
             id="name"
             name="name"
-            placeholder="John Doe"
+            placeholder="Rajesh Kumar"
             value={formData.name}
             onChange={handleChange}
             className={errors.name ? "border-destructive" : ""}
@@ -127,7 +142,7 @@ export function ContactForm() {
             id="email"
             name="email"
             type="email"
-            placeholder="john@example.com"
+            placeholder="rajesh.kumar@email.com"
             value={formData.email}
             onChange={handleChange}
             className={errors.email ? "border-destructive" : ""}

@@ -60,9 +60,6 @@ export function Services() {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Our Services
-          </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
             Comprehensive <span className="gold-text">Financial Solutions</span>
           </h2>

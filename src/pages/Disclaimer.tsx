@@ -117,7 +117,7 @@ const Disclaimer = () => {
                 If you have any questions or concerns regarding this disclaimer, please contact us at:<br />
                 <strong>Email:</strong> alphainvestmentmnt@gmail.com<br />
                 <strong>Phone:</strong> +91 9607509586<br />
-                <strong>Address:</strong> Dwarka City Sector 2A, Mahalunge Ingale, Chakan, Pune, Maharashtra 410501
+                <strong>Address:</strong> 1st Floor (Above Subhedar Biryani), Mahalungeker Complex, Mahalunge Kaman, Chakan-Talegaon Highway, Chakan, Pune 410501
               </p>
             </div>
 

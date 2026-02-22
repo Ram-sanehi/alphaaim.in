@@ -167,6 +167,15 @@
   .animate-ticker {
     animation: ticker 30s linear infinite;
   }
+
+  .animate-morph-blob {
+    animation: morph-blob 30s ease-in-out infinite;
+  }
+
+  .animate-morph-blob-delayed {
+    animation: morph-blob 35s ease-in-out infinite;
+    animation-delay: 5s;
+  }
 }
 
 @keyframes float {
@@ -184,5 +193,20 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes morph-blob {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.1) translate(20px, -15px);
+  }
+  50% {
+    transform: scale(0.9) translate(-10px, 25px);
+  }
+  75% {
+    transform: scale(1.05) translate(-20px, -10px);
   }
 }
