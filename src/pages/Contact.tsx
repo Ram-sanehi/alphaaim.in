@@ -18,7 +18,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Our Office",
-    details: ["Dwarka City Sector 2A,", "Mahalunge Ingale, Chakan,", "Pune, Maharashtra 410501"],
+    details: ["1st Floor (Above Subhedar Biryani),", "Mahalungeker Complex, Mahalunge Kaman,", "Chakan-Talegaon Highway, Chakan,", "Pune 410501"],
   },
   {
     icon: Phone,
@@ -56,9 +56,6 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Contact Us
-            </span>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Let's Start Your{" "}
               <span className="gold-text">Financial Journey</span>
@@ -165,20 +162,20 @@ const Contact = () => {
             className="glass-card rounded-2xl overflow-hidden h-96"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.4198087894544!2d73.53823!3d18.7444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ba6f6f6f6f6f%3A0x0!2sIn%20front%20of%20Mahalunge%20Gate%2C%20Ingale%2C%20Chakan%2C%20Pune%2C%20Maharashtra%20410501!5e0!3m2!1sen!2sin!4v1706460000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.0!2d73.55!3d18.73!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ba0000000000%3A0x0!2sChakan%20Talegaon%20Highway%2C%20Chakan%2C%20Pune!5e0!3m2!1sen!2sin!4v1706460000000"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Alpha Investment Management - Office Location in Pune"
+              title="Alpha Investment Management - Office Location in Chakan, Pune"
               className="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             />
           </motion.div>
           <div className="mt-6 text-center">
             <p className="text-muted-foreground text-sm">
-              📍 In front of Mahalunge Gate, Ingale, Chakan, Pune, Maharashtra 410501
+              📍 1st Floor (Above Subhedar Biryani), Mahalungeker Complex, Mahalunge Kaman, Chakan-Talegaon Highway, Chakan, Pune 410501
             </p>
           </div>
         </div>
