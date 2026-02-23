@@ -63,7 +63,7 @@ const partnerCategories = [
 const trustIndicators = [
   "10+ Years of Market Experience",
   "3000+ Satisfied Clients",
-  "₹100+ Crores Assets Under Management",
+  "₹300+ Crores Assets Under Management",
   "100% Transparent Fee Structure",
   "Personalized Investment Strategies",
   "24/7 Portfolio Monitoring",

@@ -10,8 +10,8 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { icon: Users, value: 2000, suffix: "+", label: "Happy Clients" },
-  { icon: TrendingUp, value: 100, suffix: "Cr+", label: "Assets Under Management" },
+  { icon: Users, value: 3000, suffix: "+", label: "Happy Clients" },
+  { icon: TrendingUp, value: 300, suffix: "Cr+", label: "Assets Under Management" },
   { icon: Award, value: 10, suffix: "+", label: "Years of Excellence" },
   { icon: Building2, value: 15, suffix: "+", label: "Partner Institutions" },
 ];
