@@ -41,7 +41,7 @@ const contactInfo = [
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       <Navbar />
       <StockTicker />
 

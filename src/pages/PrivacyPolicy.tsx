@@ -5,7 +5,7 @@ import { StockTicker } from "@/components/StockTicker";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       <Navbar />
       <StockTicker />
 

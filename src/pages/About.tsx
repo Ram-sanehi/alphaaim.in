@@ -18,9 +18,9 @@ const milestones = [
   { year: "2014", title: "Founded", description: "Started with a vision to democratize wealth management" },
   { year: "2017", title: "SEBI Registration", description: "Became a registered investment advisor with SEBI" },
   { year: "2020", title: "1000 Clients", description: "Milestone of serving 1000+ happy clients" },
-  { year: "2023", title: "₹50 Cr AUM", description: "Crossed ₹100 Crores in assets under management" },
+  { year: "2023", title: "₹100 Cr AUM", description: "Crossed ₹100 Crores in assets under management" },
   { year: "2025", title: "Digital Transformation", description: "Launched our digital advisory platform" },
-  { year: "current", title: "3000+ Clients", description: "Growing family of satisfied investors" },
+  { year: "current", title: "3000+ Clients & ₹300 Cr AUM", description: "Growing family of satisfied investors" },
 ];
 
 const values = [
@@ -32,7 +32,7 @@ const values = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       <Navbar />
       <StockTicker />
 
@@ -85,7 +85,7 @@ const About = () => {
                 </p>
                 <p>
                   Today, we proudly serve over 3,000 clients across India, managing assets 
-                  worth more than ₹100 crores. Our team of certified financial planners 
+                  worth more than ₹300 crores. Our team of certified financial planners 
                   and investment advisors work tirelessly to help you achieve your 
                   financial goals.
                 </p>
@@ -110,7 +110,7 @@ const About = () => {
               </div>
               <div className="glass-card rounded-xl p-6 text-center hover-glow hover:border-primary/50">
                 <Award className="h-10 w-10 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-bold gold-text">₹100Cr+</div>
+                <div className="text-3xl font-bold gold-text">₹300Cr+</div>
                 <div className="text-sm text-muted-foreground">Assets Managed</div>
               </div>
               <div className="glass-card rounded-xl p-6 text-center translate-y-8 hover-glow hover:border-primary/50">
