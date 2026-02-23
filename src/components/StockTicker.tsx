@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
@@ -11,7 +11,7 @@ interface Stock {
   openPrice: number;
 }
 
-// Real Indian stock market data with current accurate values
+// Default Indian stock market data
 const defaultStocks: Stock[] = [
   { 
     symbol: "SENSEX", 
@@ -95,41 +95,169 @@ const defaultStocks: Stock[] = [
   },
 ];
 
+// Check if Indian market is currently open (9:15 AM to 3:30 PM IST, Monday-Friday)
+function isIndianMarketOpen(): boolean {
+  const now = new Date();
+  // Convert to IST (UTC+5:30)
+  const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  
+  const dayOfWeek = istTime.getDay();
+  const hours = istTime.getHours();
+  const minutes = istTime.getMinutes();
+  const totalMinutes = hours * 60 + minutes;
+  
+  // Market is closed on weekends (0 = Sunday, 6 = Saturday)
+  if (dayOfWeek === 0 || dayOfWeek === 6) {
+    return false;
+  }
+  
+  // Market hours: 9:15 AM (555 minutes) to 3:30 PM (930 minutes)
+  const marketOpenMinutes = 9 * 60 + 15; // 9:15 AM
+  const marketCloseMinutes = 15 * 60 + 30; // 3:30 PM
+  
+  return totalMinutes >= marketOpenMinutes && totalMinutes <= marketCloseMinutes;
+}
+
 export function StockTicker() {
   const [stocks, setStocks] = useState<Stock[]>(defaultStocks);
   const [loading, setLoading] = useState(false);
+  const [marketOpen, setMarketOpen] = useState(isIndianMarketOpen());
+  const wsRef = useRef<WebSocket | null>(null);
+  const reconnectTimeoutRef = useRef<NodeJS.Timeout>();
+  const reconnectAttemptsRef = useRef(0);
+  const maxReconnectAttempts = 3;
 
   useEffect(() => {
-    // Initialize with real data
-    setLoading(false);
+    // Check market status every minute
+    const marketStatusInterval = setInterval(() => {
+      setMarketOpen(isIndianMarketOpen());
+    }, 60000);
 
-    // Update prices periodically with realistic market movement
-    const interval = setInterval(() => {
-      setStocks((prevStocks) =>
-        prevStocks.map((stock) => {
-          // Realistic market volatility (0.1% to 0.3%)
-          const volatility = (Math.random() * 0.2 + 0.1); // 0.1% to 0.3%
-          const direction = Math.random() > 0.5 ? 1 : -1;
+    const connectWebSocket = () => {
+      // Only connect if market is open
+      if (!isIndianMarketOpen()) {
+        console.log("Indian market is closed. Ticker showing static data.");
+        setLoading(false);
+        reconnectAttemptsRef.current = 0;
+        return;
+      }
+
+      const finnhubApiKey = import.meta.env.VITE_FINNHUB_API_KEY;
+      
+      if (!finnhubApiKey) {
+        console.warn("Finnhub API key not configured. Using static data.");
+        setLoading(false);
+        return;
+      }
+
+      // Limit reconnection attempts
+      if (reconnectAttemptsRef.current >= maxReconnectAttempts) {
+        console.warn("Max reconnection attempts reached. Using static data.");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const ws = new WebSocket(`wss://ws.finnhub.io?token=${finnhubApiKey}`);
+        wsRef.current = ws;
+        
+        // Set timeout for connection
+        const connectionTimeout = setTimeout(() => {
+          if (ws.readyState === WebSocket.CONNECTING) {
+            console.warn("WebSocket connection timeout. Using static data.");
+            ws.close();
+            setLoading(false);
+          }
+        }, 5000);
+
+        ws.onopen = () => {
+          clearTimeout(connectionTimeout);
+          console.log("WebSocket connected to Finnhub");
+          setLoading(false);
+          reconnectAttemptsRef.current = 0;
           
-          // Calculate realistic price change
-          const minorChange = direction * (stock.price * (volatility / 100));
-          const newPrice = Math.max(0, stock.price + minorChange);
-          
-          // Update change and percentage based on open price
-          const newChange = newPrice - stock.openPrice;
-          const newChangePercent = (newChange / stock.openPrice) * 100;
+          // Subscribe only to valid US stock symbols that have Indian equivalents
+          const symbols = ["RELIANCE", "TCS", "HDBK", "INFY", "ICICIBANK", "BHARTI", "SBIN", "WIT"];
+          symbols.forEach(symbol => {
+            try {
+              ws.send(JSON.stringify({ type: "subscribe", symbol: symbol }));
+            } catch (error) {
+              console.warn(`Failed to subscribe to ${symbol}:`, error);
+            }
+          });
+        };
 
-          return {
-            ...stock,
-            price: Math.round(newPrice * 100) / 100,
-            change: Math.round(newChange * 100) / 100,
-            changePercent: Math.round(newChangePercent * 100) / 100,
-          };
-        })
-      );
-    }, 4000); // Update every 4 seconds
+        ws.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            
+            // Handle trade data only if market is open
+            if (data.type === "trade" && data.data && isIndianMarketOpen()) {
+              data.data.forEach((trade: any) => {
+                const symbol = trade.s;
+                const price = trade.p;
+                
+                if (symbol && price) {
+                  setStocks((prevStocks) => {
+                    return prevStocks.map((stock) => {
+                      if (stock.symbol === symbol) {
+                        const change = price - stock.openPrice;
+                        const changePercent = (change / stock.openPrice) * 100;
+                        
+                        return {
+                          ...stock,
+                          price: Math.round(price * 100) / 100,
+                          change: Math.round(change * 100) / 100,
+                          changePercent: Math.round(changePercent * 100) / 100,
+                        };
+                      }
+                      return stock;
+                    });
+                  });
+                }
+              });
+            }
+          } catch (error) {
+            console.warn("Error parsing WebSocket message:", error);
+          }
+        };
 
-    return () => clearInterval(interval);
+        ws.onerror = (error) => {
+          console.warn("WebSocket error - using static data:", error);
+          setLoading(false);
+        };
+
+        ws.onclose = () => {
+          console.log("WebSocket disconnected.");
+          // Only attempt to reconnect if market is open and under max attempts
+          if (isIndianMarketOpen() && reconnectAttemptsRef.current < maxReconnectAttempts) {
+            reconnectAttemptsRef.current++;
+            console.log(`Reconnection attempt ${reconnectAttemptsRef.current}/${maxReconnectAttempts}`);
+            reconnectTimeoutRef.current = setTimeout(() => {
+              connectWebSocket();
+            }, 3000);
+          } else {
+            setLoading(false);
+          }
+        };
+      } catch (error) {
+        console.warn("Failed to create WebSocket:", error);
+        setLoading(false);
+      }
+    };
+
+    // Start connection
+    connectWebSocket();
+
+    return () => {
+      clearInterval(marketStatusInterval);
+      if (wsRef.current) {
+        wsRef.current.close();
+      }
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (

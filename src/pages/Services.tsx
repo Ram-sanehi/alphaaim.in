@@ -188,7 +188,7 @@ const ServicesPage = () => {
   const [expandedService, setExpandedService] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       <Navbar />
       <StockTicker />
 
